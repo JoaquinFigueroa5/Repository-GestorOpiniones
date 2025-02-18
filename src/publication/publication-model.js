@@ -1,6 +1,13 @@
+import { referrerPolicy } from 'helmet';
 import {Schema, model} from 'mongoose';
 
+
 const PublicationSchema = Schema({
+    titular: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
     titulo: {
         type: String,
         required: [true, "El titulo es obligatorio"]
@@ -15,7 +22,7 @@ const PublicationSchema = Schema({
     },
     comentarios: [{
         type: Schema.Types.ObjectId,
-        
+        ref: 'Comentarios'
     }],
     state: {
         type: Boolean,
