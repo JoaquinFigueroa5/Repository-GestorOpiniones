@@ -3,7 +3,11 @@ import {Schema, model} from 'mongoose';
 const ComentarioSchema = Schema({
     titular: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Publication'
+    },
+    comentario: {
+        type: String,
+        required: true
     }
 },{
     timestamps: true,
