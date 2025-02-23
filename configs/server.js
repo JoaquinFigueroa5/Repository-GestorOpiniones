@@ -10,6 +10,7 @@ import authRoutes from '../src/auth/auth-routes.js';
 import userRouter from '../src/users/user-routes.js';
 import publicactionRouter from '../src/publication/publication-routes.js';
 import comentarRouter from '../src/comentarios/comentarios-routes.js';
+import { createAdminuser } from '../src/middlewares/validar-usuarios.js';
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false}));
@@ -44,6 +45,7 @@ export const initServer = async() => {
         middlewares(app);
         conectarDB();
         routes(app);
+        createAdminuser();
     } catch (err) {
         console.log(`Server init failed: ${err}`)
     }

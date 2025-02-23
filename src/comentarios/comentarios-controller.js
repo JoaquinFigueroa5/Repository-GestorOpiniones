@@ -1,4 +1,5 @@
 import Publication from "../publication/publication-model.js";
+import Comentario from "./comentarios-model.js";
 import User from "../users/user-model.js";
 
 export const updateComent = async(req, res) => {
@@ -15,23 +16,27 @@ export const updateComent = async(req, res) => {
             });
         }
 
-        const newComment = {
+        const newComment = await Comentario.create({
             comentario,
-            titular: authenticatedUser,
-            createdAt: new Date()
-        };
+            titular: authenticatedUser
+        });        
 
         publi.comentarios.push(newComment);
 
-
+        
         await publi.save();
 
+        
+        const savedPubli = await Publication.findById(id)
+            .populate({
+                path: "comentarios",
+                populate: {
+                    path: "titular",
+                    select: "username"
+                }
+            });
 
-        const savedPubli = await Publication.findById(id).populate({
-            path: "comentarios.titular",
-            select: "name"
-        });
-
+        console.log("hola") 
         res.status(200).json({
             success: true,
             msg: "Comentario agregado",

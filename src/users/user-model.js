@@ -30,6 +30,10 @@ const UserSchema = Schema({
         maxLength: 8,
         required: true
     },
+    role: {
+        type: String,
+        enum: ['ADMIN_ROLE']
+    },
     state: {
         type: Boolean,
         default: true

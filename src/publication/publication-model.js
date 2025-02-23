@@ -22,7 +22,7 @@ const PublicationSchema = Schema({
     },
     comentarios: [{
         type: Schema.Types.ObjectId,
-        ref: 'Comentarios'
+        ref: 'Comentario'
     }],
     state: {
         type: Boolean,

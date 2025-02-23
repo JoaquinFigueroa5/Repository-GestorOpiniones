@@ -39,8 +39,16 @@ export const getPublications = async(req, res) => {
     try {
         const publications = await Publication.find()
             .skip(Number(desde))
-            .limit(Number(limit));
-
+            .limit(Number(limit))
+            .populate({
+                path: "comentarios",
+                populate: {
+                    path: "titular",
+                    select: "username -_id"
+                }
+            })
+            .populate("titular", "username -_id");
+            
         const total = await Publication.countDocuments(query);
 
         return res.status(200).json({
@@ -50,10 +58,11 @@ export const getPublications = async(req, res) => {
             publications
         })
     } catch (error) {
+        console.error("Error al obtener publicaciones:", error);
         return res.status(500).json({
             success: false,
             msg: "Error al obtener las publicaciones",
-            error
+            error: error.message || error
         })
     }
 }
