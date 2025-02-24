@@ -1,4 +1,6 @@
 import User from '../users/user-model.js';
+import Categoria from '../categorias/categorias-model.js';
+import Comentario from '../comentarios/comentarios-model.js';
 import argon2 from "argon2";
 
 export const onlyOneStudent = async(req, res, next) => {
@@ -23,19 +25,30 @@ export const onlyOneStudent = async(req, res, next) => {
     }
 }
 
-export const beforePassword = async(req, res, next) => {
+export const justEditAOneStudent = async(req, res, next) => {
     const { id } = req.params;
-    const authenticatedUser = req.user.password;
+    const authenticatedUser = req.user.id;
+
+    const comment = await Comentario.findById(id);
+
+    console.log("Usuario autenticado:", authenticatedUser);
+    console.log("Titular del comentario:", comment.titular.toString());
 
     try {
-        if(authenticatedUser !== id){
+        if (comment.titular.toString() !== authenticatedUser) {
             return res.status(403).json({
                 success: false,
-                msg: "Tiene que ingresar tu antigua contraseña"
-            })
+                msg: "No tienes permiso para editar este comentario"
+            });
         }
+
+        next();
     } catch (error) {
-        
+        res.status(500).json({
+            success: false,
+            msg: "Error al modificar el comentario",
+            error: error.message || error
+        })
     }
 }
 
@@ -72,8 +85,41 @@ export const createAdminuser = async() => {
 
 export const createCategoria = async() => {
     try {
-        
+        const categoriaExists = await Categoria.findOne({nombre: "Social"});
+
+        if(!categoriaExists){
+            const categoriaDefault = new Categoria({
+                nombre: "Social"
+            });
+
+            await categoriaDefault.save();
+            console.log("Categoria creada con exito");
+        }else{
+            console.log(`Categoria ya existente`)
+        }
     } catch (error) {
         console.log("Error al crear la categoria")
+    }
+}
+
+export const onlyAdmin = async(req, res, next) => {
+    try {
+        const {id} = req.params;
+        const authenticatedUserAdmin = req.user.role;
+        
+        if(authenticatedUserAdmin !== "ADMIN_ROLE"){
+            return res.status(403).json({
+                success: false,
+                msg: "Solo el ADMIN puede modificar una categoria"
+            })
+        }
+
+        next()
+    } catch (error) {
+        return res.json(500).json({
+            success: false,
+            msg: "Error al modificar la categoria",
+            error: error.message || error
+        })
     }
 }

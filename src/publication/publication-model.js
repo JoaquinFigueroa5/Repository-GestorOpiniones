@@ -1,4 +1,3 @@
-import { referrerPolicy } from 'helmet';
 import {Schema, model} from 'mongoose';
 
 
@@ -12,10 +11,11 @@ const PublicationSchema = Schema({
         type: String,
         required: [true, "El titulo es obligatorio"]
     },
-    categoria: {
-        type: String,
+    categoria: [{
+        type: Schema.Types.ObjectId,
+        ref: "Categoria",
         required: [true, "La categoria es obligatoria"]
-    },
+    }],
     texto: {
         type: String,
         required: [true, "El texto es obligatorio"]

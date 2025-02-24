@@ -10,7 +10,8 @@ import authRoutes from '../src/auth/auth-routes.js';
 import userRouter from '../src/users/user-routes.js';
 import publicactionRouter from '../src/publication/publication-routes.js';
 import comentarRouter from '../src/comentarios/comentarios-routes.js';
-import { createAdminuser } from '../src/middlewares/validar-usuarios.js';
+import categoriaRouter from '../src/categorias/categorias-routes.js'
+import { createAdminuser, createCategoria } from '../src/middlewares/validar-usuarios.js';
 
 const middlewares = (app) => {
     app.use(express.urlencoded({ extended: false}));
@@ -24,7 +25,8 @@ const routes = (app) => {
     app.use('/gestorOpiniones/v1/auth', authRoutes),
     app.use('/gestorOpiniones/v1/users', userRouter),
     app.use('/gestorOpiniones/v1/publications', publicactionRouter),
-    app.use('/gestorOpiniones/v1/publications/comment', comentarRouter)
+    app.use('/gestorOpiniones/v1/publications/comment', comentarRouter),
+    app.use('/gestorOpiniones/v1/categorias', categoriaRouter)
 }
 
 const conectarDB = async() => {
@@ -46,6 +48,7 @@ export const initServer = async() => {
         conectarDB();
         routes(app);
         createAdminuser();
+        createCategoria();
     } catch (err) {
         console.log(`Server init failed: ${err}`)
     }

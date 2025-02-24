@@ -1,22 +1,40 @@
-import User from '../users/user-model.js';
 import Publication from './publication-model.js';
+import Categoria from '../categorias/categorias-model.js';
 
 export const savePublication = async(req, res) => {
     try {
         const data = req.body;
+        const categoria = await Categoria.findOne({ categoria: data.nombre});
         const titular = req.user.id;
+        
+        if(!categoria){
+            return res.status(404).json({
+                success: false,
+                msg: "Property not found"
+            })
+        } 
 
         const publication = new Publication({
             ...data,
+            categoria: categoria._id,
             titular: titular
         })
 
         await publication.save();
 
-        const savedTitular = await Publication.findById(publication._id).populate({
-            path: 'titular',
-            select: 'name'
+        const savedTitular = await Publication.findById(publication._id)
+        .populate({
+            path: "comentarios",
+            select: "titular comentario -_id",
+            populate: {
+                path: "titular",
+                select: "username -_id"
+            }
         })
+        .populate("categoria", "nombre -_id")
+        .populate("titular", "username -_id")
+
+        
 
         res.status(200).json({
             success: true,
@@ -42,11 +60,13 @@ export const getPublications = async(req, res) => {
             .limit(Number(limit))
             .populate({
                 path: "comentarios",
+                select: "titular comentario -_id",
                 populate: {
                     path: "titular",
                     select: "username -_id"
                 }
             })
+            .populate("categoria", "nombre -_id")
             .populate("titular", "username -_id");
             
         const total = await Publication.countDocuments(query);
