@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "12c29b90-1aec-4442-9975-825955875df1",
+		"name": "Auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413593"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Saul\",\r\n  \"surname\": \"Delta\",\r\n  \"username\": \"gokuSaul\",\r\n  \"email\": \"sdelta@gmail.com\",\r\n  \"password\": \"Saul2007\",\r\n  \"phone\": \"58771857\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"gokuSaul\",\r\n  \"password\": \"Saul2007\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "67bd582fa7796ca04853e1e7"
+  },
+  "titular": {
+    "$oid": "67b720dd421cc45a9e4a33c3"
+  },
+  "comentario": "Te quiero mucho bro",
+  "createdAt": {
+    "$date": "2025-02-25T05:42:07.423Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T10:46:59.356Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bdb0c20fb0459667400fc4"
+  },
+  "titular": {
+    "$oid": "67bdaf990fb0459667400f88"
+  },
+  "comentario": "Es un grande, opino lo mismo",
+  "createdAt": {
+    "$date": "2025-02-25T12:00:02.724Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T12:00:02.724Z"
+  }
+}]

@@ -31,9 +31,13 @@ export const justEditAOneStudent = async(req, res, next) => {
 
     const comment = await Comentario.findById(id);
 
-    console.log("Usuario autenticado:", authenticatedUser);
-    console.log("Titular del comentario:", comment.titular.toString());
-
+    if (!comment) {
+        return res.status(404).json({
+            success: false,
+            msg: "El comentario no existe"
+        });
+    }
+    
     try {
         if (comment.titular.toString() !== authenticatedUser) {
             return res.status(403).json({

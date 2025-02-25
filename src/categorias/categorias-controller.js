@@ -1,4 +1,5 @@
 import Categoria from "./categorias-model.js";
+import Publication from "../publication/publication-model.js";
 
 export const saveCategoria = async(req, res) => {
     try{
@@ -49,6 +50,14 @@ export const getCategorias = async(req, res) => {
 export const deleteCategorias = async(req, res) => {
     const { id } = req.params;
     try{
+        const categoriaEliminada = await Categoria.findById(id);
+        const categoriaSocial = await Categoria.findOne({ categoria: "Social" });
+
+        await Publication.updateMany(
+            { categoria: categoriaEliminada._id },
+            { categoria: categoriaSocial._id }
+        );
+
         await Categoria.findByIdAndDelete(id);
 
         res.status(200).json({

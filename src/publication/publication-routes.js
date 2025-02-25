@@ -1,9 +1,9 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { savePublication, getPublications, eliminarPubli } from './publication-controller.js';
+import { savePublication, getPublications, eliminarPubli, updatePubli } from './publication-controller.js';
 import { validarCampos } from '../middlewares/validar-campos.js';
 import { validarJWT } from "../middlewares/validar-jwt.js";
-import { eliminarPublicacion } from '../middlewares/validar-publicaciones.js';
+import { eliminarPublicacion, editarPublicacion } from '../middlewares/validar-publicaciones.js';
 
 const router = Router();
 
@@ -32,6 +32,16 @@ router.delete(
         validarCampos
     ],
     eliminarPubli
+)
+
+router.put(
+    '/:id',
+    [
+        validarJWT,
+        editarPublicacion,
+        validarCampos
+    ],
+    updatePubli
 )
 
 export default router;

@@ -54,26 +54,27 @@ export const savePublication = async(req, res) => {
     }
 }
 
-export const getPublications = async(req, res) => {
+export const getPublications = async(req = request, res = response) => {
     const { limit = 10, desde = 0 } = req.query;
     const query = { state: true };
 
     try {
-        const publications = await Publication.find()
-            .skip(Number(desde))
-            .limit(Number(limit))
-            .populate({
-                path: "comentarios",
-                select: "titular comentario -_id",
-                populate: {
-                    path: "titular",
-                    select: "username -_id"
-                }
-            })
-            .populate("categoria", "categoria -_id")
-            .populate("titular", "username -_id");
-            
-        const total = await Publication.countDocuments(query);
+        const [total, publications] = await Promise.all([
+            Publication.countDocuments(query),
+            Publication.find(query)
+                .skip(Number(desde))
+                .limit(Number(limit))
+                .populate({
+                    path: "comentarios",
+                    select: "titular comentario -_id",
+                    populate: {
+                        path: "titular",
+                        select: "username -_id"
+                    }
+                })
+                .populate("categoria", "categoria -_id")
+                .populate("titular", "username -_id")
+        ])
 
         return res.status(200).json({
             success: true,
@@ -97,7 +98,19 @@ export const eliminarPubli = async(req, res) => {
 
         await Publication.findByIdAndUpdate(id, { state: false })
         
-        const publi = await Publication.findById(id);
+        
+        const publi = await Publication.findById(id)
+        .populate({
+            path: "comentarios",
+            select: "titular comentario -_id",
+            populate: {
+                path: "titular",
+                select: "username -_id"
+            }
+        })
+        .populate("categoria", "categoria -_id")
+        .populate("titular", "username -_id");
+
         if (!publi) {
             return res.status(404).json({
                 success: false,
@@ -114,6 +127,50 @@ export const eliminarPubli = async(req, res) => {
         res.status(500).json({
             success: false,
             msg: "Error al eliminar la publicacion"
+        })
+    }
+}
+
+export const updatePubli = async(req, res) => {
+    try {
+        const { id } = req.params;
+        const { _id, categoria, ...data } = req.body;
+
+        const categoriaString = Array.isArray(categoria) ? categoria[0] : categoria;
+
+        const categorias = await Categoria.findOne({ categoria: categoriaString });
+
+        if (!categorias) {
+            return res.status(404).json({ 
+                success: false, 
+                msg: "Categoría no encontrada" 
+            });
+        }
+
+        data.categoria = categorias._id;
+
+        const publi = await Publication.findByIdAndUpdate(id, data, {new: true})
+        .populate({
+            path: "comentarios",
+            select: "titular comentario -_id",
+            populate: {
+                path: "titular",
+                select: "username -_id"
+            }
+        })
+        .populate("categoria", "categoria -_id")
+        .populate("titular", "username -_id");
+
+        res.status(200).json({
+            success: true,
+            msg: "Publicacion actualizada",
+            publi
+        })
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            msg: "Error al actualizar la publicacioN",
+            error: error.message || error
         })
     }
 }

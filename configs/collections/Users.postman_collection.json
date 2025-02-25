@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "bd516925-a5d0-41cf-bcb5-2c18afec7fe8",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413593"
+	},
+	"item": [
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkYWY5OTBmYjA0NTk2Njc0MDBmODgiLCJpYXQiOjE3NDA0ODQ2NzgsImV4cCI6MTc0MDQ5NTQ3OH0.aRFtl4QeFNaGOYAuoaA7wb1adRijyyOSZtJ_qd5xFgQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"SAUL\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/users/67bdaf990fb0459667400f88",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"users",
+						"67bdaf990fb0459667400f88"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

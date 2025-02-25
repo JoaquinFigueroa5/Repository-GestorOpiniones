@@ -1,0 +1,144 @@
+{
+	"info": {
+		"_postman_id": "11bf7374-9f8e-4572-b518-3241fb3e7847",
+		"name": "Categorias",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413593"
+	},
+	"item": [
+		{
+			"name": "getCategorias",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "registerCategorias",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I3MWVjYzhiMjJmOTEyMDBlY2MzZWEiLCJpYXQiOjE3NDA0ODQ2MDMsImV4cCI6MTc0MDQ5NTQwM30.O3_PyIVrSyfIFkCZmXym2IrNGCbXR4a28dP8ckfV0DM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoria\": \"Cosa X\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/categorias",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"categorias"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteCategorias",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I3MWVjYzhiMjJmOTEyMDBlY2MzZWEiLCJpYXQiOjE3NDA0ODQzNzMsImV4cCI6MTc0MDQ5NTE3M30.h0LYX8rS7BJuOCzC-Oh2zBqoe4_EhSi5fR6xzCe5iWA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/categorias/67bdb0130fb0459667400f97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"categorias",
+						"67bdb0130fb0459667400f97"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateCategorias",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2I3MWVjYzhiMjJmOTEyMDBlY2MzZWEiLCJpYXQiOjE3NDA0ODQ2MDMsImV4cCI6MTc0MDQ5NTQwM30.O3_PyIVrSyfIFkCZmXym2IrNGCbXR4a28dP8ckfV0DM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoria\": \"Cosa Y\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/categorias/67bdb0130fb0459667400f97",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"categorias",
+						"67bdb0130fb0459667400f97"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

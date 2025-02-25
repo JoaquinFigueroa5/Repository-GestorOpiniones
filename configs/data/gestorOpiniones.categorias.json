@@ -1,0 +1,26 @@
+[{
+  "_id": {
+    "$oid": "67bd4d7a7e9620e2a5017de5"
+  },
+  "categoria": "Social",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-02-25T04:56:26.731Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T04:56:26.731Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bdb0090fb0459667400f94"
+  },
+  "categoria": "Evento",
+  "state": true,
+  "createdAt": {
+    "$date": "2025-02-25T11:56:57.759Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T11:56:57.759Z"
+  }
+}]

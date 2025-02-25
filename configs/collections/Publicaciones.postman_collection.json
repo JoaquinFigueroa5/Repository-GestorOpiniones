@@ -1,0 +1,193 @@
+{
+	"info": {
+		"_postman_id": "c5b38d4c-b593-443b-a89a-c0c85196b186",
+		"name": "Publicaciones",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413593"
+	},
+	"item": [
+		{
+			"name": "submitPublication",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkYWY5OTBmYjA0NTk2Njc0MDBmODgiLCJpYXQiOjE3NDA0ODQ2NzgsImV4cCI6MTc0MDQ5NTQ3OH0.aRFtl4QeFNaGOYAuoaA7wb1adRijyyOSZtJ_qd5xFgQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"titulo\": \"Joulishet\",\r\n  \"categoria\": \"Social\",\r\n  \"texto\": \"El más capito de todos\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/publications/submit",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"publications",
+						"submit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getPublications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/publications/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"publications",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deletePublication",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkYWY5OTBmYjA0NTk2Njc0MDBmODgiLCJpYXQiOjE3NDA0ODQ2NzgsImV4cCI6MTc0MDQ5NTQ3OH0.aRFtl4QeFNaGOYAuoaA7wb1adRijyyOSZtJ_qd5xFgQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/publications/67bdb09f0fb0459667400fb7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"publications",
+						"67bdb09f0fb0459667400fb7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "submitComment",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkYWY5OTBmYjA0NTk2Njc0MDBmODgiLCJpYXQiOjE3NDA0ODQ2NzgsImV4cCI6MTc0MDQ5NTQ3OH0.aRFtl4QeFNaGOYAuoaA7wb1adRijyyOSZtJ_qd5xFgQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"comentario\": \"Es un grande, opino lo mismo\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/publications/comment/67bd4de1104bfb3318fc1cc2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"publications",
+						"comment",
+						"67bd4de1104bfb3318fc1cc2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updatePublications",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JkYWY5OTBmYjA0NTk2Njc0MDBmODgiLCJpYXQiOjE3NDA0ODQ2NzgsImV4cCI6MTc0MDQ5NTQ3OH0.aRFtl4QeFNaGOYAuoaA7wb1adRijyyOSZtJ_qd5xFgQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"categoria\": \"Evento\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3015/gestorOpiniones/v1/publications/67bdb09f0fb0459667400fb7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3015",
+					"path": [
+						"gestorOpiniones",
+						"v1",
+						"publications",
+						"67bdb09f0fb0459667400fb7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

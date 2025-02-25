@@ -1,38 +1,76 @@
 [{
   "_id": {
-    "$oid": "67b425204dbc975e1345f44f"
-  },
-  "titular": {
-    "$oid": "67b3de463ed67aa25fc628a0"
-  },
-  "titulo": "Hola como estan",
-  "categoria": "Social",
-  "texto": "Espero que esten muy bien",
-  "comentarios": [],
-  "state": true,
-  "createdAt": {
-    "$date": "2025-02-18T06:13:52.712Z"
-  },
-  "updatedAt": {
-    "$date": "2025-02-18T06:52:53.269Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "67b425ef4dbc975e1345f455"
+    "$oid": "67bd4de1104bfb3318fc1cc2"
   },
   "titular": {
     "$oid": "67b3e31b8b959db20e2756f3"
   },
-  "titulo": "Los amo",
-  "categoria": "Especial: San Valentin",
-  "texto": "Amo demasiado a mi novio Joaquin Figueroa",
-  "comentarios": [],
-  "state": false,
+  "titulo": "Esta bien hermosote",
+  "categoria": [
+    {
+      "$oid": "67bd4d7a7e9620e2a5017de5"
+    }
+  ],
+  "texto": "Lo amo muchooo",
+  "comentarios": [
+    {
+      "$oid": "67bd582fa7796ca04853e1e7"
+    },
+    {
+      "$oid": "67bdb0c20fb0459667400fc4"
+    }
+  ],
+  "state": true,
   "createdAt": {
-    "$date": "2025-02-18T06:17:19.897Z"
+    "$date": "2025-02-25T04:58:09.256Z"
   },
   "updatedAt": {
-    "$date": "2025-02-18T06:55:06.019Z"
+    "$date": "2025-02-25T12:00:02.731Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bdb0750fb0459667400fa8"
+  },
+  "titular": {
+    "$oid": "67bdaf990fb0459667400f88"
+  },
+  "titulo": "Joaquin es un grande",
+  "categoria": [
+    {
+      "$oid": "67bdb0090fb0459667400f94"
+    }
+  ],
+  "texto": "El más capito de todos",
+  "comentarios": [],
+  "state": true,
+  "createdAt": {
+    "$date": "2025-02-25T11:58:45.207Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T11:58:45.207Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67bdb09f0fb0459667400fb7"
+  },
+  "titular": {
+    "$oid": "67bdaf990fb0459667400f88"
+  },
+  "titulo": "Ola",
+  "categoria": [
+    {
+      "$oid": "67bdb0090fb0459667400f94"
+    }
+  ],
+  "texto": "El más capito de todos",
+  "comentarios": [],
+  "state": true,
+  "createdAt": {
+    "$date": "2025-02-25T11:59:27.374Z"
+  },
+  "updatedAt": {
+    "$date": "2025-02-25T12:01:44.389Z"
   }
 }]
