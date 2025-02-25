@@ -3,9 +3,13 @@ import Categoria from '../categorias/categorias-model.js';
 
 export const savePublication = async(req, res) => {
     try {
+        console.log("Body recibido:", req.body);
+
         const data = req.body;
-        const categoria = await Categoria.findOne({ categoria: data.nombre});
+        const categoria = await Categoria.findOne({ categoria: data.categoria} );
         const titular = req.user.id;
+
+        console.log("Categoría encontrada:", categoria);
         
         if(!categoria){
             return res.status(404).json({
@@ -31,7 +35,7 @@ export const savePublication = async(req, res) => {
                 select: "username -_id"
             }
         })
-        .populate("categoria", "nombre -_id")
+        .populate("categoria", "categoria -_id")
         .populate("titular", "username -_id")
 
         
@@ -66,7 +70,7 @@ export const getPublications = async(req, res) => {
                     select: "username -_id"
                 }
             })
-            .populate("categoria", "nombre -_id")
+            .populate("categoria", "categoria -_id")
             .populate("titular", "username -_id");
             
         const total = await Publication.countDocuments(query);

@@ -5,7 +5,7 @@ export const saveCategoria = async(req, res) => {
         const data = req.body;
 
         const categoria = new Categoria({
-            nombre: data.nombre
+            categoria: data.categoria
         })
 
         await categoria.save();
@@ -67,11 +67,11 @@ export const deleteCategorias = async(req, res) => {
 export const updateCategoria = async(req, res) => {
     try {
         const { id } = req.params;
-        const { _id, nombre, ...data} = req.body;
+        const { _id, categoria, ...data} = req.body;
 
         const catego = await Categoria.findByIdAndUpdate(id, data, {new: true});
 
-        catego.nombre = nombre;
+        catego.categoria = categoria;
         await catego.save(); 
 
         res.status(200).json({

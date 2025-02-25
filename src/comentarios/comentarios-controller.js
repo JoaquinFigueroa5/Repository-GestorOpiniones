@@ -36,7 +36,7 @@ export const updateComent = async(req, res) => {
                     select: "username -_id"
                 }
             })
-            .populate("categoria", "nombre -_id")
+            .populate("categoria", "categoria -_id")
             .populate("titular", "username -_id")
 
         res.status(200).json({

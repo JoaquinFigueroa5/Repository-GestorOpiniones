@@ -1,7 +1,7 @@
 import {Schema, model} from 'mongoose';
 
 const CategoriaSchema = Schema({
-    nombre: {
+    categoria: {
         type: String,
         required: true
     },
@@ -11,7 +11,7 @@ const CategoriaSchema = Schema({
     }
 },{
     timestamps: true,
-    versionkey: false
+    versionKey: false
 });
 
 export default model('Categoria', CategoriaSchema);

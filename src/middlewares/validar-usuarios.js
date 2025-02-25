@@ -85,11 +85,11 @@ export const createAdminuser = async() => {
 
 export const createCategoria = async() => {
     try {
-        const categoriaExists = await Categoria.findOne({nombre: "Social"});
+        const categoriaExists = await Categoria.findOne({categoria: "Social"});
 
         if(!categoriaExists){
             const categoriaDefault = new Categoria({
-                nombre: "Social"
+                categoria: "Social"
             });
 
             await categoriaDefault.save();
